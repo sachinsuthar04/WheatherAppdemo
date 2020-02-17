@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sachin.weathear.ui.viewmodle.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/background"
+        tools:context=".ui.activity.MainActivity">
+
+        <ImageView
+            android:id="@+id/ivThumb"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@color/cardview_shadow_start_color"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tvTempr"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTempr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text='22sec'
+            android:textSize="42sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivThumb"
+            app:layout_constraintLeft_toRightOf="@+id/ivThumb"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivThumb" />
+        <!--        @{viewModel.response!=null?viewModel.response.city.name:""}-->
+
+        <TextView
+            android:id="@+id/tvWeatherType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="Clouds"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivThumb" />
+
+
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text='Naroda'
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWeatherType" />
+        <!--        @{viewModel.response!=null?viewModel.response.city.name:""}-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
+            android:text="Next 5 days forecast"
+            app:layout_constraintBottom_toTopOf="@id/recyclerView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            adapter="@{viewModel.userAdapter}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/raw_user" />
+
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableVisibility="@{viewModel.getLoadingVisibility()}" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

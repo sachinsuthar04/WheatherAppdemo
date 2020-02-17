@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sachin.weathear.rest.vo.Main" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/banner"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/tvDay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text=""
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivThumb"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@color/cardview_shadow_start_color"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDay" />
+
+            <TextView
+                android:id="@+id/tvTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@{Double.toString(viewModel.temp)}"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivThumb" />
+
+            <TextView
+                android:id="@+id/tvTempMin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@{Double.toString(viewModel.temp_min)}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tvTempMax"
+                app:layout_constraintTop_toBottomOf="@+id/tvTemp" />
+
+            <TextView
+                android:id="@+id/tvTempMax"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@{Double.toString(viewModel.temp_max)}"
+                app:layout_constraintLeft_toRightOf="@id/tvTempMin"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTemp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
