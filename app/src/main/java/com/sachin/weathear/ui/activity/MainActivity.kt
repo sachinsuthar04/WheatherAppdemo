@@ -33,7 +33,7 @@ class MainActivity : BaseActivity() {
             if (viewModel.loadingVisibility.value == 8) {
                 mDatabinding.tvCity.text = viewModel.response.city.name
 
-                mDatabinding.tvTempr.text =  (viewModel.response.list[0].main.temp - 273.15).roundToInt().toString()+" C"
+                mDatabinding.tvTempr.text =  (viewModel.response.list[0].main.temp).roundToInt().toString()+" C"
                 mDatabinding.tvWeatherType.text = viewModel.response.list[0].weather[0].main
                 viewModel.response.list.forEach {
 
